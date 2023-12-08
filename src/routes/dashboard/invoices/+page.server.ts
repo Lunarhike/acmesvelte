@@ -2,7 +2,10 @@ import { sql } from '@vercel/postgres';
 
 const ITEMS_PER_PAGE = 6;
 
-export async function load({ url }) {
+export async function load({ url, setHeaders }) {
+	setHeaders({
+		'max-age': '60'
+	});
 	const query = url.searchParams?.query || '';
 	const currentPage = Number(url.searchParams?.page) || 1;
 	const offset = (currentPage - 1) * ITEMS_PER_PAGE;

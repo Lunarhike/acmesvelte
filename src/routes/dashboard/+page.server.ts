@@ -1,7 +1,10 @@
 import { sql } from '@vercel/postgres';
 import { formatCurrency } from '$lib/utils';
 
-export async function load() {
+export async function load({ setHeaders }) {
+	setHeaders({
+		'max-age': '60'
+	});
 	try {
 		const data = await sql`
 		  SELECT invoices.amount, customers.name, customers.image_url, customers.email, invoices.id
