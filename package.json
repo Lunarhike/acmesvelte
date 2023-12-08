@@ -42,6 +42,7 @@
 	"type": "module",
 	"dependencies": {
 		"@fontsource-variable/inter": "^5.0.16",
+		"@vercel/analytics": "^1.1.1",
 		"@vercel/postgres": "^0.5.1",
 		"@vercel/speed-insights": "^1.0.1",
 		"dotenv-expand": "^10.0.0"
