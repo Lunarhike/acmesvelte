@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { onCLS, onFCP, onFID, onLCP, onTTFB } from 'web-vitals';
 
 const vitalsUrl = 'https://vitals.vercel-analytics.com/v1/vitals';
