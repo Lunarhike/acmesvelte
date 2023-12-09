@@ -1,18 +1,19 @@
 <script lang="ts">
 	import { createQuery } from '@tanstack/svelte-query';
 	import ArrowPathIcon from '~icons/ph/arrows-clockwise';
+	import { formatCurrency } from '$lib/utils';
 
-	export let characterId: string;
+	export let latestInvoiceId: string;
 
-	const getCharacter = async () => {
-		const res = await fetch(`/api/invoices`);
+	const getLatestInvoices = async () => {
+		const res = await fetch(`/api/home`);
 		const objects = await res.json();
 		return objects;
 	};
 
 	const query = createQuery({
-		queryKey: ['character', characterId],
-		queryFn: getCharacter
+		queryKey: ['latestInvoices', latestInvoiceId],
+		queryFn: getLatestInvoices
 	});
 </script>
 
@@ -21,7 +22,7 @@
 		<h2 class="font-lusitana mb-4 text-xl md:text-2xl">Latest Invoices</h2>
 		<div class="flex grow flex-col justify-between rounded-xl bg-gray-50 p-4">
 			<div class="bg-white px-6">
-				{#each $query.data.filteredInvoices as invoice, i (invoice.id)}
+				{#each $query.data.latestInvoices as invoice, i (invoice.id)}
 					<div
 						class={i !== 0
 							? 'flex flex-row items-center justify-between py-4 border-t'
