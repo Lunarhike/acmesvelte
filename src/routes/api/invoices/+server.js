@@ -1,14 +1,13 @@
 import { sql } from '@vercel/postgres';
-
 const ITEMS_PER_PAGE = 6;
 
-export async function load({ url }) {
-	const query = url.searchParams?.query || '';
-	const currentPage = Number(url.searchParams?.page) || 1;
+/** @type {import('./$types').RequestHandler} */
+export async function GET({ url }) {
+	const query = url.searchParams.get('query') || '';
+	const currentPage = Number(url.searchParams.get('page')) || 1;
 	const offset = (currentPage - 1) * ITEMS_PER_PAGE;
 
-	try {
-		const filteredInvoices = await sql`
+	const filteredInvoices = await sql`
         SELECT
         invoices.id,
         invoices.amount,
@@ -29,9 +28,7 @@ export async function load({ url }) {
         LIMIT ${ITEMS_PER_PAGE} OFFSET ${offset}
     `;
 
-		return { props: { filteredInvoices } };
-	} catch (error) {
-		console.error('Database Error:', error);
-		throw new Error('Failed to fetch invoices.');
-	}
+	return new Response(JSON.stringify({ filteredInvoices: filteredInvoices.rows }), {
+		headers: { 'content-type': 'application/json' }
+	});
 }

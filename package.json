@@ -42,6 +42,8 @@
 	"type": "module",
 	"dependencies": {
 		"@fontsource-variable/inter": "^5.0.16",
+		"@tanstack/svelte-query": "^5.13.2",
+		"@tanstack/svelte-query-devtools": "^5.13.3",
 		"@vercel/analytics": "^1.1.1",
 		"@vercel/postgres": "^0.5.1",
 		"@vercel/speed-insights": "^1.0.1",

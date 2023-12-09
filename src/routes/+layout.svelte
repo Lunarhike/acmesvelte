@@ -5,6 +5,13 @@
 	import { dev } from '$app/environment';
 	import { inject } from '@vercel/analytics';
 	inject({ mode: dev ? 'development' : 'production' });
+	import { QueryClientProvider } from '@tanstack/svelte-query';
+
+	export let data;
 </script>
 
-<slot />
+<QueryClientProvider client={data.queryClient}>
+	<main>
+		<slot />
+	</main>
+</QueryClientProvider>

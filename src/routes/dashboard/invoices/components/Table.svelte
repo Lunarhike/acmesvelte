@@ -5,8 +5,6 @@
 	import { formatDateToLocal, formatCurrency } from '$lib/utils';
 
 	export let filteredInvoices = [];
-	let query = '';
-	let currentPage = 0;
 </script>
 
 <div class="mt-6 flow-root">
@@ -68,7 +66,7 @@
 										class="rounded-full"
 										width={28}
 										height={28}
-										alt="invoice image"
+										alt="invoice"
 									/>
 									<p>{invoice.name}</p>
 								</div>

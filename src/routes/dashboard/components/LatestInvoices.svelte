@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
 	import ArrowPathIcon from '~icons/ph/arrows-clockwise'; // You need to find a Svelte alternative for this
 	export let latestInvoices = [];
 </script>
@@ -37,4 +37,4 @@
 			<h3 class="ml-2 text-sm text-gray-500">Updated just now</h3>
 		</div>
 	</div>
-</div>
+</div> -->
